@@ -146,6 +146,9 @@ class GeminiService {
   - "tomorrow" = current date + 1 day
   - "three days from now" = current date + 3 days
   - "next Monday" = next occurrence of Monday
+  - "next week" = current date + 7 days
+  - "next month" = current date + 1 month (same day of month)
+  - "in two weeks" = current date + 14 days
   - Always return dates in YYYY-MM-DD format
   
   ### Rules:
@@ -171,6 +174,9 @@ class GeminiService {
   - "What events do I have?" → {"intent": "list_events", "confidence": 0.95, "fields": {"userMessage": "what events do i have"}}
   - "Do I have any meetings with John tomorrow?" → {"intent": "list_events", "confidence": 0.95, "fields": {"date": "2025-10-03", "attendees": ["John"]}}
   - "update that event title to be meeting with Nadhir" → {"intent": "update_event", "confidence": 0.95, "fields": {"event_identifier": "test", "title": "meeting with nadhir"}}
+  - "reschedule that event to next month" → {"intent": "update_event", "confidence": 0.95, "fields": {"event_identifier": "that event", "date": "2025-11-02", "time": "15:00"}}
+  - "move my meeting to next week" → {"intent": "update_event", "confidence": 0.95, "fields": {"event_identifier": "my meeting", "date": "2025-10-09", "time": "15:00"}}
+  - "change the React interview to next month" → {"intent": "update_event", "confidence": 0.95, "fields": {"event_identifier": "React interview", "date": "2025-11-02", "time": "15:00"}}
   - "What can you help me with?" → {"intent": "get_information", "confidence": 0.9, "fields": {}}
   - "Help me with something" → {"intent": "help_request", "confidence": 0.9, "fields": {}}
   - "What's the weather like?" → {"intent": "general_chat", "confidence": 0.8, "fields": {}}`;

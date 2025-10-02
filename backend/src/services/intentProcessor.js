@@ -28,7 +28,7 @@ class IntentProcessor {
       const multipleIntents = await this.detectMultipleIntents(text, conversationHistory);
       
       if (multipleIntents.length > 1) {
-        return await this.executeMultipleIntents(multipleIntents, userId, text);
+        return await this.executeMultipleIntents(multipleIntents, userId, text, user);
       }
 
       // Step 3: Single intent processing (existing logic)
@@ -40,7 +40,8 @@ class IntentProcessor {
       // Step 4: Resolution & Validation
       const validationResult = await this.validateAndResolve(
         extractionResult,
-        userId
+        userId,
+        user
       );
 
       // Step 5: Action/Workflow Execution
@@ -168,7 +169,7 @@ If only one intent is detected, return:
    * @param {string} originalText - Original user message
    * @returns {Promise<Object>} - Combined result
    */
-  async executeMultipleIntents(intents, userId, originalText) {
+  async executeMultipleIntents(intents, userId, originalText, user = null) {
     try {
       const results = [];
       let allSuccessful = true;
@@ -179,7 +180,7 @@ If only one intent is detected, return:
         
         try {
           // Validate and resolve each intent
-          const validationResult = await this.validateAndResolve(intent, userId);
+          const validationResult = await this.validateAndResolve(intent, userId, user);
           
           if (validationResult.needsClarification) {
             results.push({
@@ -256,7 +257,7 @@ If only one intent is detected, return:
    * @param {string} userId - User identifier
    * @returns {Promise<Object>} - Validated and resolved intent
    */
-  async validateAndResolve(extractionResult, userId) {
+  async validateAndResolve(extractionResult, userId, user = null) {
     const { intent, confidence, fields, originalMessage } = extractionResult;
 
     // Check if this is a general chat request
@@ -312,7 +313,8 @@ If only one intent is detected, return:
     ) {
       const resolutionResult = await this.resolveEventIdentifier(
         fields.event_identifier,
-        userId
+        userId,
+        user
       );
 
       if (!resolutionResult.success) {
@@ -604,10 +606,10 @@ If only one intent is detected, return:
   /**
    * Resolve event identifier to actual event
    */
-  async resolveEventIdentifier(identifier, userId) {
+  async resolveEventIdentifier(identifier, userId, user = null) {
     try {
       // Get all calendar events for AI search
-      const calendarResult = await calendarService.searchEvents("", userId);
+      const calendarResult = await calendarService.searchEvents("", user);
       const calendarEvents = calendarResult.events || [];
 
       if (calendarEvents.length === 0) {

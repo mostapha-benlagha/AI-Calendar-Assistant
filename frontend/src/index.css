@@ -54,7 +54,7 @@
   }
   
   .event-card {
-    @apply bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-soft-lg border border-slate-200 dark:border-slate-700;
+    @apply bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700;
   }
   
   .event-card-header {
@@ -122,6 +122,107 @@
   
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Enhanced text styling */
+  .text-enhanced {
+    @apply leading-relaxed text-slate-800 dark:text-slate-200;
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+    text-rendering: optimizeLegibility;
+  }
+
+  .text-enhanced-sm {
+    @apply text-sm sm:text-base;
+  }
+
+  .text-enhanced-base {
+    @apply text-base sm:text-lg;
+  }
+
+  .text-enhanced-lg {
+    @apply text-lg sm:text-xl;
+  }
+
+  /* Message text styling */
+  .message-text {
+    @apply text-enhanced text-enhanced-sm;
+    line-height: 1.6;
+    word-spacing: 0.05em;
+    letter-spacing: -0.01em;
+  }
+
+  .message-text-user {
+    @apply text-white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .message-text-assistant {
+    @apply text-slate-800 dark:text-slate-200;
+  }
+
+  .message-text-error {
+    @apply text-accent-800 dark:text-accent-200;
+  }
+
+  /* Rich text formatting */
+  .rich-text {
+    @apply message-text;
+  }
+
+  .rich-text strong {
+    @apply font-semibold text-slate-900 dark:text-slate-100;
+  }
+
+  .rich-text em {
+    @apply italic text-slate-700 dark:text-slate-300;
+  }
+
+  .rich-text code {
+    @apply bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-slate-200 px-1.5 py-0.5 rounded text-sm font-mono;
+  }
+
+  .rich-text a {
+    @apply text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 underline decoration-primary-300 dark:decoration-primary-600 hover:decoration-primary-500 dark:hover:decoration-primary-400 transition-colors duration-200;
+  }
+
+  .rich-text ul, .rich-text ol {
+    @apply ml-4 space-y-1;
+  }
+
+  .rich-text li {
+    @apply relative;
+  }
+
+  .rich-text ul li::before {
+    content: '•';
+    @apply text-primary-500 dark:text-primary-400 font-bold absolute -left-4;
+  }
+
+  .rich-text ol {
+    @apply list-decimal;
+  }
+
+  .rich-text blockquote {
+    @apply border-l-4 border-primary-200 dark:border-primary-700 pl-4 italic text-slate-600 dark:text-slate-400;
+  }
+
+  .rich-text h1, .rich-text h2, .rich-text h3, .rich-text h4, .rich-text h5, .rich-text h6 {
+    @apply font-semibold text-slate-900 dark:text-slate-100 mt-4 mb-2;
+  }
+
+  .rich-text h1 { @apply text-xl sm:text-2xl; }
+  .rich-text h2 { @apply text-lg sm:text-xl; }
+  .rich-text h3 { @apply text-base sm:text-lg; }
+  .rich-text h4 { @apply text-sm sm:text-base; }
+  .rich-text h5 { @apply text-sm; }
+  .rich-text h6 { @apply text-xs sm:text-sm; }
+
+  .rich-text p {
+    @apply mb-3 last:mb-0;
+  }
+
+  .rich-text hr {
+    @apply border-0 border-t border-slate-200 dark:border-slate-700 my-4;
   }
 }
 

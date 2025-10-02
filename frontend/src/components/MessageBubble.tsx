@@ -17,6 +17,23 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
     return format(timestamp, 'h:mm a');
   };
 
+  // Format text with basic markdown-like formatting
+  const formatMessageText = (text: string) => {
+    return text
+      // Bold text
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      // Italic text
+      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      // Code blocks
+      .replace(/`(.*?)`/g, '<code>$1</code>')
+      // Line breaks
+      .replace(/\n/g, '<br>')
+      // Bullet points
+      .replace(/^[-•]\s+(.+)$/gm, '<li>$1</li>')
+      // Numbered lists
+      .replace(/^\d+\.\s+(.+)$/gm, '<li>$1</li>');
+  };
+
   return (
     <div className={`flex gap-3 sm:gap-4 mb-4 sm:mb-6 ${isUser ? 'justify-end' : 'justify-start'} animate-slide-up`}>
       {!isUser && (
@@ -45,11 +62,22 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
               : 'chat-message.assistant'
           }`}
         >
-          {isEvent && message.data ? (
-            <EventCard eventData={message.data} />
-          ) : (
-            <div className="whitespace-pre-wrap text-balance leading-relaxed text-sm sm:text-base">
-              {message.text}
+          {/* Always show the text response */}
+          <div 
+            className={`whitespace-pre-wrap text-balance rich-text ${
+              isUser 
+                ? 'message-text-user' 
+                : isError 
+                ? 'message-text-error' 
+                : 'message-text-assistant'
+            }`}
+            dangerouslySetInnerHTML={{ __html: formatMessageText(message.text) }}
+          />
+          
+          {/* Show event card if available */}
+          {isEvent && message.data && (
+            <div className="mt-4">
+              <EventCard eventData={message.data} />
             </div>
           )}
         </div>
