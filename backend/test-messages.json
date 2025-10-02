@@ -1,0 +1,92 @@
+{
+  "testMessages": [
+    {
+      "category": "Create Event",
+      "messages": [
+        "Schedule a meeting with John tomorrow at 2 PM",
+        "Book a client call for next Friday at 10 AM in the conference room",
+        "Create an appointment with Dr. Smith on December 15th at 3:30 PM",
+        "Schedule a team standup every Monday at 9 AM",
+        "Book a property viewing for next Tuesday at 2 PM in downtown"
+      ]
+    },
+    {
+      "category": "Update Event",
+      "messages": [
+        "Reschedule my 3 PM appointment to 4 PM",
+        "Move my team meeting from Tuesday to Wednesday",
+        "Change my client call from 2 PM to 3 PM tomorrow",
+        "Update my dentist appointment to next week",
+        "Modify the project kickoff meeting to start at 10 AM instead of 9 AM"
+      ]
+    },
+    {
+      "category": "Cancel Event",
+      "messages": [
+        "Cancel my dentist appointment",
+        "Remove the Friday team standup",
+        "Delete my 3 PM meeting with Sarah",
+        "Cancel my property viewing tomorrow",
+        "Remove my client call scheduled for next week"
+      ]
+    },
+    {
+      "category": "Prepare Event",
+      "messages": [
+        "Prepare for my client meeting next week",
+        "Give me details about tomorrow's presentation",
+        "What do I need to know for my team meeting on Friday?",
+        "Help me prepare for the property showing tomorrow",
+        "What should I bring to my appointment with Dr. Johnson?"
+      ]
+    },
+    {
+      "category": "Follow-up Event",
+      "messages": [
+        "Schedule a follow-up meeting 3 days after my client call",
+        "Set up a check-in 1 week after the project kickoff",
+        "Create a follow-up appointment 2 weeks after my property viewing",
+        "Schedule a review meeting 5 days after the team presentation",
+        "Set up a follow-up call 1 month after the initial consultation"
+      ]
+    },
+    {
+      "category": "General Chat",
+      "messages": [
+        "What's the weather like today?",
+        "Tell me about real estate market trends",
+        "How can I improve my productivity?",
+        "What are some good time management tips?",
+        "Help me understand the current interest rates"
+      ]
+    },
+    {
+      "category": "Complex Scenarios",
+      "messages": [
+        "Reschedule my seller meeting from 2:30 to 4 PM in Paris",
+        "Cancel my 3 PM appointment and schedule a new one for next Tuesday at 10 AM",
+        "Prepare for my client meeting tomorrow and schedule a follow-up for next week",
+        "Move my team standup from Monday to Tuesday and invite the new developer",
+        "Cancel my property viewing and reschedule it for Friday at 2 PM with the client"
+      ]
+    }
+  ],
+  "expectedIntents": {
+    "create_event": ["title", "date", "time"],
+    "update_event": ["event_identifier"],
+    "cancel_event": ["event_identifier"],
+    "prepare_event": ["event_identifier"],
+    "followup_event": ["event_identifier", "followupDays"],
+    "general_chat": []
+  },
+  "testingInstructions": {
+    "1": "Start the backend server: npm run dev",
+    "2": "Start the frontend server: npm run dev",
+    "3": "Open http://localhost:3000 in your browser",
+    "4": "Try each test message and verify the response",
+    "5": "Check that the correct intent is extracted",
+    "6": "Verify that calendar actions work (if Google Calendar is connected)",
+    "7": "Test error handling with invalid messages"
+  }
+}
+

@@ -1,0 +1,72 @@
+import React from 'react';
+import { Message } from '../types';
+import { EventCard } from './EventCard';
+import { format } from 'date-fns';
+import { User, Bot, AlertCircle } from 'lucide-react';
+
+interface MessageBubbleProps {
+  message: Message;
+}
+
+export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
+  const isUser = message.sender === 'user';
+  const isError = message.type === 'error';
+  const isEvent = message.type === 'event';
+
+  const formatTime = (timestamp: Date) => {
+    return format(timestamp, 'h:mm a');
+  };
+
+  return (
+    <div className={`flex gap-3 sm:gap-4 mb-4 sm:mb-6 ${isUser ? 'justify-end' : 'justify-start'} animate-slide-up`}>
+      {!isUser && (
+        <div className="flex-shrink-0">
+          <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-2xl flex items-center justify-center shadow-soft ${
+            isError 
+              ? 'bg-accent-100 dark:bg-accent-900/30 border border-accent-200 dark:border-accent-700/50' 
+              : 'bg-gradient-primary'
+          }`}>
+            {isError ? (
+              <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 text-accent-600 dark:text-accent-400" />
+            ) : (
+              <Bot className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+            )}
+          </div>
+        </div>
+      )}
+
+      <div className={`flex flex-col max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-3xl ${isUser ? 'items-end' : 'items-start'}`}>
+        <div
+          className={`chat-message ${
+            isUser
+              ? 'chat-message.user'
+              : isError
+              ? 'bg-accent-50/80 dark:bg-accent-900/30 border-accent-200/50 dark:border-accent-700/50 text-accent-800 dark:text-accent-200 backdrop-blur-md'
+              : 'chat-message.assistant'
+          }`}
+        >
+          {isEvent && message.data ? (
+            <EventCard eventData={message.data} />
+          ) : (
+            <div className="whitespace-pre-wrap text-balance leading-relaxed text-sm sm:text-base">
+              {message.text}
+            </div>
+          )}
+        </div>
+
+        <div className={`text-xs text-slate-500 dark:text-slate-400 mt-1 sm:mt-2 px-1 ${isUser ? 'text-right' : 'text-left'}`}>
+          {formatTime(message.timestamp)}
+        </div>
+      </div>
+
+      {isUser && (
+        <div className="flex-shrink-0">
+          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-2xl bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-600 dark:to-slate-700 flex items-center justify-center shadow-soft">
+            <User className="w-4 h-4 sm:w-5 sm:h-5 text-slate-600 dark:text-slate-300" />
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
