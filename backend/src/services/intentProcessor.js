@@ -25,10 +25,18 @@ class IntentProcessor {
       const conversationHistory = userSession.conversationHistory || [];
 
       // Step 2: Check for multiple intents (chaining)
-      const multipleIntents = await this.detectMultipleIntents(text, conversationHistory);
-      
+      const multipleIntents = await this.detectMultipleIntents(
+        text,
+        conversationHistory
+      );
+
       if (multipleIntents.length > 1) {
-        return await this.executeMultipleIntents(multipleIntents, userId, text, user);
+        return await this.executeMultipleIntents(
+          multipleIntents,
+          userId,
+          text,
+          user
+        );
       }
 
       // Step 3: Single intent processing (existing logic)
@@ -45,7 +53,11 @@ class IntentProcessor {
       );
 
       // Step 5: Action/Workflow Execution
-      const actionResult = await this.executeAction(validationResult, userId, user);
+      const actionResult = await this.executeAction(
+        validationResult,
+        userId,
+        user
+      );
 
       // Step 6: Feedback Generation
       const feedback = await this.generateFeedback(
@@ -119,32 +131,89 @@ class IntentProcessor {
    * Build prompt for detecting multiple intents
    */
   buildMultipleIntentPrompt() {
-    return `You are an intent detection assistant. Analyze the user's message to identify if it contains multiple separate actions or intents.
-
-Guidelines:
-- Look for connecting words like "and", "then", "also", "after that", "next"
-- Identify separate actions that can be executed independently
-- Each action should have its own intent and fields
-- Return an array of intents if multiple are detected, or empty array if single intent
-
-Examples:
-- "Duplicate this event and cancel the other one" → Multiple intents
-- "List my events and update their titles" → Multiple intents  
-- "Create an event tomorrow" → Single intent
-- "Cancel my meeting" → Single intent
-
-Return format:
-{
-  "multipleIntents": [
-    {"intent": "create_event", "fields": {...}},
-    {"intent": "cancel_event", "fields": {...}}
-  ]
-}
-
-If only one intent is detected, return:
-{
-  "multipleIntents": []
-}`;
+    return `
+  You are an **Intent Detection Assistant** designed to analyze user messages and determine if they contain **multiple separate intents or actions**.
+  
+  ### Your Objective
+  Determine whether the user's input contains more than one independent action (intent).  
+  Each intent represents an action that can be executed on its own.
+  
+  ---
+  
+  ### Guidelines for Detection
+  - Look for connectors indicating separate actions:
+    - Examples: "and", "then", "after that", "next", "also", "as well", "followed by"
+  - Each **distinct action** should correspond to one **intent** with its own fields or parameters.
+  - If the actions depend on one another but are still separable, treat them as multiple intents.
+  - If the message describes one continuous or single action, it's a single intent.
+  
+  ---
+  
+  ### Return Format (Strict JSON)
+  Always return **only** valid JSON in this exact format:
+  
+  \`\`\`json
+  {
+    "multipleIntents": [
+      {
+        "intent": "string (the detected intent name, e.g., 'create_event', 'cancel_event')",
+        "fields": { "fieldName": "value", ... }
+      }
+    ]
+  }
+  \`\`\`
+  
+  - If **multiple intents** are found → include one object per intent.
+  - If **only one intent** or **none** is found → return:
+  \`\`\`json
+  { "multipleIntents": [] }
+  \`\`\`
+  
+  ---
+  
+  ### Examples
+  **Input:** "Duplicate this event and cancel the other one"  
+  **Output:**  
+  \`\`\`json
+  {
+    "multipleIntents": [
+      { "intent": "duplicate_event", "fields": { "target": "this event" } },
+      { "intent": "cancel_event", "fields": { "target": "other one" } }
+    ]
+  }
+  \`\`\`
+  
+  **Input:** "List my events and update their titles"  
+  **Output:**  
+  \`\`\`json
+  {
+    "multipleIntents": [
+      { "intent": "list_events", "fields": {} },
+      { "intent": "update_event_titles", "fields": {} }
+    ]
+  }
+  \`\`\`
+  
+  **Input:** "Create an event tomorrow"  
+  **Output:**  
+  \`\`\`json
+  { "multipleIntents": [] }
+  \`\`\`
+  
+  **Input:** "Cancel my meeting"  
+  **Output:**  
+  \`\`\`json
+  { "multipleIntents": [] }
+  \`\`\`
+  
+  ---
+  
+  ### Notes
+  - Be concise and deterministic — no explanations, reasoning, or text outside JSON.
+  - Output **must** be parseable JSON.
+  - If uncertain, err on the side of returning a single intent.
+  
+  `;
   }
 
   /**
@@ -177,50 +246,65 @@ If only one intent is detected, return:
 
       for (let i = 0; i < intents.length; i++) {
         const intent = intents[i];
-        
+
         try {
           // Validate and resolve each intent
-          const validationResult = await this.validateAndResolve(intent, userId, user);
-          
+          const validationResult = await this.validateAndResolve(
+            intent,
+            userId,
+            user
+          );
+
           if (validationResult.needsClarification) {
             results.push({
               success: false,
               intent: intent.intent,
-              message: validationResult.clarificationMessage
+              message: validationResult.clarificationMessage,
             });
             allSuccessful = false;
-            combinedMessage += `${i + 1}. ❌ ${intent.intent}: ${validationResult.clarificationMessage}\n`;
+            combinedMessage += `${i + 1}. ❌ ${intent.intent}: ${
+              validationResult.clarificationMessage
+            }\n`;
             continue;
           }
 
           // Execute the action
-          const actionResult = await this.executeAction(validationResult, userId);
-          
+          const actionResult = await this.executeAction(
+            validationResult,
+            userId
+          );
+
           if (actionResult.success) {
             results.push({
               success: true,
               intent: intent.intent,
               message: actionResult.message,
-              data: actionResult.data
+              data: actionResult.data,
             });
-            combinedMessage += `${i + 1}. ✅ ${intent.intent}: ${actionResult.message}\n`;
+            combinedMessage += `${i + 1}. ✅ ${intent.intent}: ${
+              actionResult.message
+            }\n`;
           } else {
             results.push({
               success: false,
               intent: intent.intent,
-              message: actionResult.error || "Action failed"
+              message: actionResult.error || "Action failed",
             });
             allSuccessful = false;
-            combinedMessage += `${i + 1}. ❌ ${intent.intent}: ${actionResult.error || "Action failed"}\n`;
+            combinedMessage += `${i + 1}. ❌ ${intent.intent}: ${
+              actionResult.error || "Action failed"
+            }\n`;
           }
         } catch (error) {
           results.push({
             success: false,
             intent: intent.intent,
-            message: error.message
+            message: error.message,
           });
           allSuccessful = false;
-          combinedMessage += `${i + 1}. ❌ ${intent.intent}: ${error.message}\n`;
+          combinedMessage += `${i + 1}. ❌ ${intent.intent}: ${
+            error.message
+          }\n`;
         }
       }
 
@@ -236,8 +320,8 @@ If only one intent is detected, return:
           action: "multiple_intents",
           results: results,
           totalIntents: intents.length,
-          successfulIntents: results.filter(r => r.success).length
-        }
+          successfulIntents: results.filter((r) => r.success).length,
+        },
       };
     } catch (error) {
       console.error("Error executing multiple intents:", error);
@@ -245,8 +329,9 @@ If only one intent is detected, return:
         success: false,
         intent: "multiple_intents",
         confidence: 0.0,
-        response: "I encountered an error while processing multiple actions. Please try again.",
-        error: error.message
+        response:
+          "I encountered an error while processing multiple actions. Please try again.",
+        error: error.message,
       };
     }
   }
@@ -569,7 +654,7 @@ If only one intent is detected, return:
    */
   async executeListEvents(fields, userId, user = null) {
     try {
-      const { userMessage, date, attendees } = fields;
+      const { userMessage } = fields;
 
       // Get all calendar events for context
       const calendarResult = await calendarService.searchEvents("", user);
@@ -639,28 +724,11 @@ If only one intent is detected, return:
         };
       }
 
-      // If AI couldn't find a match, fall back to traditional search
-      let result = await calendarService.searchEvents(identifier, user);
-
-      if (result.events.length === 0) {
-        return {
-          success: false,
-          message: `No events found matching "${identifier}". Please check the event title or try a different identifier.`,
-        };
-      }
-
-      if (result.events.length === 1) {
-        return {
-          success: true,
-          event: result.events[0],
-        };
-      }
-
       // Multiple matches - return list for user to choose
       return {
         success: false,
         message: `Multiple events found matching "${identifier}". Please be more specific:`,
-        events: result.events,
+        events: [],
         multipleMatches: true,
       };
     } catch (error) {
@@ -738,7 +806,11 @@ If only one intent is detected, return:
    */
   async continueEventUpdate(userId, eventId, updateData, user = null) {
     try {
-      const result = await calendarService.updateEvent(eventId, updateData, user);
+      const result = await calendarService.updateEvent(
+        eventId,
+        updateData,
+        user
+      );
 
       // Clear context after successful update
       const userSession = this.getUserSession(userId);
