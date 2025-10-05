@@ -714,6 +714,7 @@ class IntentProcessor {
         calendarEvents,
         conversationHistory
       );
+      console.log("aiResult", aiResult);
 
       if (aiResult.success && aiResult.event) {
         return {
