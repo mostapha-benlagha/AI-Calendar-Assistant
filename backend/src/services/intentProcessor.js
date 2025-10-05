@@ -4,7 +4,7 @@ const {
   OPTIONAL_FIELDS,
 } = require("../constants/intents");
 const calendarService = require("./calendarService");
-const geminiService = require("./geminiService");
+const qwenService = require("./qwenService");
 
 class IntentProcessor {
   constructor() {
@@ -32,7 +32,7 @@ class IntentProcessor {
       }
 
       // Step 3: Single intent processing (existing logic)
-      const extractionResult = await geminiService.extractIntent(
+      const extractionResult = await qwenService.extractIntent(
         text,
         conversationHistory
       );
@@ -85,7 +85,7 @@ class IntentProcessor {
       const systemPrompt = this.buildMultipleIntentPrompt();
       const historyContext = this.buildHistoryContext(conversationHistory);
 
-      const response = await geminiService.extractIntent(
+      const response = await qwenService.extractIntent(
         `${systemPrompt}\n\n${historyContext}\n\nUser Message: "${text}"`,
         conversationHistory
       );
@@ -580,7 +580,7 @@ If only one intent is detected, return:
       const conversationHistory = userSession.conversationHistory || [];
 
       // Use Gemini to generate a contextual response based on the user's query and available events
-      const response = await geminiService.generateEventListResponse(
+      const response = await qwenService.generateEventListResponse(
         userMessage || "Show me my events",
         calendarEvents,
         conversationHistory
@@ -624,7 +624,7 @@ If only one intent is detected, return:
       const conversationHistory = userSession.conversationHistory || [];
 
       // Use AI to find the best matching event
-      const aiResult = await geminiService.findMatchingEvent(
+      const aiResult = await qwenService.findMatchingEvent(
         identifier,
         calendarEvents,
         conversationHistory
@@ -800,7 +800,7 @@ Attendees: ${event.attendees?.map((a) => a.email).join(", ") || "Not specified"}
 
 Provide 3-5 bullet points with practical preparation tips and talking points.`;
 
-      const notes = await geminiService.generateChatResponse(prompt);
+      const notes = await qwenService.generateChatResponse(prompt);
       return notes;
     } catch (error) {
       return "Unable to generate notes at this time.";

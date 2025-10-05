@@ -6,7 +6,7 @@ class QwenService {
   constructor() {
     this.apiKey = config.qwen.apiKey;
     this.apiUrl = config.qwen.apiUrl;
-    this.model = config.qwen.model || "qwen-turbo";
+    this.model = config.qwen.model;
 
     if (!this.apiKey) {
       throw new Error("QWEN_API_KEY is required");
@@ -37,36 +37,30 @@ class QwenService {
       }
 
       const response = await axios.post(
-        this.apiUrl,
+        `${this.apiUrl}/chat/completions`,
         {
           model: this.model,
-          input: {
-            messages: [
-              {
-                role: "system",
-                content: systemPrompt
-              },
-              {
-                role: "user", 
-                content: `Current Date: ${currentDate}${contextText}"${message}"`
-              }
-            ]
-          },
-          parameters: {
-            temperature: 0.0,
-            top_p: 0.8,
-            max_tokens: 1024,
-          },
+
+          messages: [
+            {
+              role: "system",
+              content: systemPrompt,
+            },
+            {
+              role: "user",
+              content: `Current Date: ${currentDate}${contextText}"${message}"`,
+            },
+          ],
         },
         {
           headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${this.apiKey}`,
+            Authorization: `Bearer ${this.apiKey}`,
           },
         }
       );
 
-      const generatedText = response.data.output.text;
+      const generatedText = response.data.choices[0].message.content;
       const result = this.parseIntentResponse(generatedText);
       result.originalMessage = message;
       return result;
@@ -88,37 +82,32 @@ class QwenService {
       const historyContext = this.buildHistoryContext(conversationHistory);
 
       const response = await axios.post(
-        this.apiUrl,
+        `${this.apiUrl}/chat/completions`,
         {
           model: this.model,
-          input: {
-            messages: [
-              {
-                role: "system",
-                content: systemPrompt
-              },
-              ...(historyContext ? [{ role: "user", content: historyContext }] : []),
-              {
-                role: "user",
-                content: message
-              }
-            ]
-          },
-          parameters: {
-            temperature: 0.7,
-            top_p: 0.95,
-            max_tokens: 1024,
-          },
+          messages: [
+            {
+              role: "system",
+              content: systemPrompt,
+            },
+            ...(historyContext
+              ? [{ role: "user", content: historyContext }]
+              : []),
+            {
+              role: "user",
+              content: message,
+            },
+          ],
         },
         {
           headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${this.apiKey}`,
+            Authorization: `Bearer ${this.apiKey}`,
           },
         }
       );
 
-      return response.data.output.text;
+      return response.data.choices[0].message.content;
     } catch (error) {
       console.error("Error generating chat response:", error);
       throw new Error("Failed to generate chat response");
@@ -210,36 +199,29 @@ class QwenService {
       const historyContext = this.buildHistoryContext(conversationHistory);
 
       const response = await axios.post(
-        this.apiUrl,
+        `${this.apiUrl}/chat/completions`,
         {
           model: this.model,
-          input: {
-            messages: [
-              {
-                role: "system",
-                content: systemPrompt
-              },
-              {
-                role: "user",
-                content: `${eventsContext}\n\n${historyContext}\n\nUser Query: "${userQuery}"`
-              }
-            ]
-          },
-          parameters: {
-            temperature: 0.7,
-            top_p: 0.95,
-            max_tokens: 1024,
-          },
+          messages: [
+            {
+              role: "system",
+              content: systemPrompt,
+            },
+            {
+              role: "user",
+              content: `${eventsContext}\n\n${historyContext}\n\nUser Query: "${userQuery}"`,
+            },
+          ],
         },
         {
           headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${this.apiKey}`,
+            Authorization: `Bearer ${this.apiKey}`,
           },
         }
       );
 
-      return response.data.output.text;
+      return response.data.choices[0].message.content;
     } catch (error) {
       console.error("Error generating event list response:", error);
       throw new Error("Failed to generate event list response");
@@ -314,36 +296,29 @@ Description: ${event.description || "No description"}`;
       const historyContext = this.buildHistoryContext(conversationHistory);
 
       const response = await axios.post(
-        this.apiUrl,
+        `${this.apiUrl}/chat/completions`,
         {
           model: this.model,
-          input: {
-            messages: [
-              {
-                role: "system",
-                content: systemPrompt
-              },
-              {
-                role: "user",
-                content: `${eventsContext}\n\n${historyContext}\n\nUser Query: "${userQuery}"`
-              }
-            ]
-          },
-          parameters: {
-            temperature: 0.1,
-            top_p: 0.95,
-            max_tokens: 512,
-          },
+          messages: [
+            {
+              role: "system",
+              content: systemPrompt,
+            },
+            {
+              role: "user",
+              content: `${eventsContext}\n\n${historyContext}\n\nUser Query: "${userQuery}"`,
+            },
+          ],
         },
         {
           headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${this.apiKey}`,
+            Authorization: `Bearer ${this.apiKey}`,
           },
         }
       );
 
-      const generatedText = response.data.output.text;
+      const generatedText = response.data.choices[0].message.content;
       return this.parseEventSearchResponse(generatedText, calendarEvents);
     } catch (error) {
       console.error("Error finding matching event:", error);

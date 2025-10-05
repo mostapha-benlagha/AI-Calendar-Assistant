@@ -1,12 +1,12 @@
 # AI Calendar Assistant
 
-A full-stack chatbot application that integrates with Google Calendar and performs intelligent actions based on user intents. Built with Express.js, React, and Google's Gemini AI.
+A full-stack chatbot application that integrates with Google Calendar and performs intelligent actions based on user intents. Built with Express.js, React, and Alibaba's Qwen AI.
 
 ## Features
 
 ### 🎯 Intent-Based Processing
 - **Agenda & Scheduling Intents**: create_event, update_event, cancel_event, prepare_event, followup_event
-- **AI-Powered Intent Extraction**: Uses Gemini AI to understand user messages
+- **AI-Powered Intent Extraction**: Uses Qwen AI to understand user messages
 - **Smart Validation**: Asks for missing information and resolves ambiguities
 - **Fallback to General Chat**: When no specific intent is detected
 
@@ -27,7 +27,7 @@ A full-stack chatbot application that integrates with Google Calendar and perfor
 ### Backend
 - **Node.js** with Express.js
 - **Google Calendar API** for calendar operations
-- **Google Gemini AI** for intent extraction and chat
+- **Alibaba Qwen AI** for intent extraction and chat
 - **Socket.IO** for real-time communication
 - **Joi** for request validation
 
@@ -43,7 +43,7 @@ A full-stack chatbot application that integrates with Google Calendar and perfor
 ### Prerequisites
 - Node.js 18+ and npm
 - Google Cloud Console project with Calendar API enabled
-- Google Gemini API key
+- Alibaba Cloud DashScope API key (for Qwen)
 
 ### 1. Clone and Setup
 
@@ -66,9 +66,10 @@ Create a `.env` file in the backend directory:
 PORT=3001
 NODE_ENV=development
 
-# Gemini API Configuration
-GEMINI_API_KEY=your_gemini_api_key_here
-GEMINI_API_URL=https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent
+# Qwen API Configuration (Alibaba Cloud DashScope)
+QWEN_API_KEY=your_qwen_api_key_here
+QWEN_API_URL=https://dashscope-intl.aliyuncs.com/compatible-mode/v1
+QWEN_MODEL=qwen-max-latest
 
 # Google Calendar API Configuration
 GOOGLE_CLIENT_ID=your_google_client_id_here
@@ -112,10 +113,10 @@ npm run dev
 5. Add `http://localhost:3001/auth/google/callback` to authorized redirect URIs
 6. Copy the Client ID and Client Secret to your `.env` file
 
-### 5. Gemini API Setup
+### 5. Qwen API Setup
 
-1. Go to [Google AI Studio](https://makersuite.google.com/app/apikey)
-2. Create a new API key
+1. Go to [Alibaba Cloud DashScope](https://dashscope.aliyun.com/)
+2. Create an account and get your API key
 3. Copy the API key to your `.env` file
 
 ## Usage Examples
@@ -239,7 +240,7 @@ npm run preview
 ## Environment Variables
 
 ### Required Variables
-- `GEMINI_API_KEY`: Your Google Gemini API key
+- `QWEN_API_KEY`: Your Alibaba Cloud DashScope API key
 - `GOOGLE_CLIENT_ID`: Google OAuth client ID
 - `GOOGLE_CLIENT_SECRET`: Google OAuth client secret
 
@@ -254,7 +255,7 @@ npm run preview
 The application includes comprehensive error handling:
 
 - **Validation Errors**: Invalid request format
-- **API Errors**: Gemini or Google Calendar API failures
+- **API Errors**: Qwen or Google Calendar API failures
 - **Connection Errors**: WebSocket disconnections
 - **Rate Limiting**: Too many requests protection
 

@@ -32,7 +32,7 @@
     "nodemon": "^3.0.2",
     "jest": "^29.7.0"
   },
-  "keywords": ["chatbot", "calendar", "ai", "gemini", "google-calendar"],
+  "keywords": ["chatbot", "calendar", "ai", "qwen", "google-calendar"],
   "author": "Your Name",
   "license": "MIT"
 }
