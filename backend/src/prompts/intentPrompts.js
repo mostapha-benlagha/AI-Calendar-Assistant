@@ -76,7 +76,6 @@ function buildMultipleIntentPrompt() {
               "date": "2025-10-03",
               "time": "06:00-07:00",
               "attendees": ["John"],
-              "recurrence": "none"
             }
           },
           {
@@ -117,7 +116,6 @@ function buildMultipleIntentPrompt() {
               "title": "Event",
               "date": "2025-10-03",
               "time": "06:00-07:00",
-              "recurrence": "none"
             }
           },
           {
@@ -274,7 +272,7 @@ function buildIntentExtractionPrompt() {
     - followupDays: Number of days for follow-up
     - event_identifier: Title, date, or description to identify existing event
     - userMessage: Original user query (for info requests)
-    - recurrence: RFC 5545 recurrence rule (e.g., "RRULE:FREQ=WEEKLY;BYDAY=MO;COUNT=5") or "none" if not recurring
+    - recurrence: RFC 5545 recurrence rule (e.g., "RRULE:FREQ=WEEKLY;BYDAY=MO;COUNT=5") or dont add the field if not recurring
     
     For recurrence extraction:
     1. Detect if the message implies repetition (e.g., daily, weekly, every Monday, monthly, every two weeks, repeat all week, etc.).
@@ -313,8 +311,8 @@ function buildIntentExtractionPrompt() {
        - time = "06:00-07:00"
     
     ### Examples (assuming current date is 2025-10-02):
-    - "Schedule a meeting with John tomorrow at 2 PM" → {"intent": "create_event", "confidence": 0.95, "fields": {"title": "Meeting with John", "date": "2025-10-03", "time": "14:00", "attendees": ["John"], "recurrence": "none"}}
-    - "Create an event three days from now with Islam" → {"intent": "create_event", "confidence": 0.95, "fields": {"title": "Event", "date": "2025-10-05", "time": "06:00-07:00", "attendees": ["Islam"], "recurrence": "none"}}
+    - "Schedule a meeting with John tomorrow at 2 PM" → {"intent": "create_event", "confidence": 0.95, "fields": {"title": "Meeting with John", "date": "2025-10-03", "time": "14:00", "attendees": ["John"]}}
+    - "Create an event three days from now with Islam" → {"intent": "create_event", "confidence": 0.95, "fields": {"title": "Event", "date": "2025-10-05", "time": "06:00-07:00", "attendees": ["Islam"]}}
     - "Create for today and repeat it all week" → {"intent": "create_event", "confidence": 0.95, "fields": {"title": "Event", "date": "2025-10-02", "time": "06:00-07:00", "recurrence": "RRULE:FREQ=DAILY;COUNT=7"}}
     - "Schedule a call with Thomas every Monday at 9am for 5 weeks" → {"intent": "create_event", "confidence": 0.95, "fields": {"title": "Call with Thomas", "time": "09:00", "recurrence": "RRULE:FREQ=WEEKLY;BYDAY=MO;COUNT=5"}}
     - "Cancel my 3 PM appointment" → {"intent": "cancel_event", "confidence": 0.9, "fields": {"event_identifier": "3 PM appointment"}}

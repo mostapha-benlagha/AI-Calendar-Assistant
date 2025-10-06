@@ -497,6 +497,8 @@ class CalendarService {
       recurrence: [recurrence] || [],
     };
 
+    console.log("Formatted Event Data:", event);
+
     // Add attendees if provided (only valid email addresses)
     if (attendees && attendees.length > 0) {
       const validAttendees = attendees
