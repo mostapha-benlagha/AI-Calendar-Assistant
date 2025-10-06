@@ -447,6 +447,7 @@ class CalendarService {
       location,
       attendees,
       description,
+      recurrence,
     } = eventData;
 
     // Parse date and time
@@ -493,6 +494,7 @@ class CalendarService {
         dateTime: endDateTime.toISOString(),
         timeZone: "UTC",
       },
+      recurrence: [recurrence] || [],
     };
 
     // Add attendees if provided (only valid email addresses)

@@ -1,10 +1,18 @@
-const {
-  INTENTS,
-  REQUIRED_FIELDS,
-  OPTIONAL_FIELDS,
-} = require("../constants/intents");
+const { INTENTS, REQUIRED_FIELDS } = require("../constants/intents");
 const calendarService = require("./calendarService");
 const qwenService = require("./qwenService");
+const {
+  buildMultipleIntentPrompt,
+  generateEventNotesPrompt,
+  getInformationResponse,
+  getHelpRequestResponse,
+  getGeneralChatResponse,
+  getEventPreparationResponse,
+  getMultipleEventsFoundResponse,
+  getNoEventsFoundResponse,
+  getEventSearchErrorResponse,
+  getActionFailedResponse,
+} = require("../prompts/intentPrompts");
 
 class IntentProcessor {
   constructor() {
@@ -131,89 +139,7 @@ class IntentProcessor {
    * Build prompt for detecting multiple intents
    */
   buildMultipleIntentPrompt() {
-    return `
-  You are an **Intent Detection Assistant** designed to analyze user messages and determine if they contain **multiple separate intents or actions**.
-  
-  ### Your Objective
-  Determine whether the user's input contains more than one independent action (intent).  
-  Each intent represents an action that can be executed on its own.
-  
-  ---
-  
-  ### Guidelines for Detection
-  - Look for connectors indicating separate actions:
-    - Examples: "and", "then", "after that", "next", "also", "as well", "followed by"
-  - Each **distinct action** should correspond to one **intent** with its own fields or parameters.
-  - If the actions depend on one another but are still separable, treat them as multiple intents.
-  - If the message describes one continuous or single action, it's a single intent.
-  
-  ---
-  
-  ### Return Format (Strict JSON)
-  Always return **only** valid JSON in this exact format:
-  
-  \`\`\`json
-  {
-    "multipleIntents": [
-      {
-        "intent": "string (the detected intent name, e.g., 'create_event', 'cancel_event')",
-        "fields": { "fieldName": "value", ... }
-      }
-    ]
-  }
-  \`\`\`
-  
-  - If **multiple intents** are found → include one object per intent.
-  - If **only one intent** or **none** is found → return:
-  \`\`\`json
-  { "multipleIntents": [] }
-  \`\`\`
-  
-  ---
-  
-  ### Examples
-  **Input:** "Duplicate this event and cancel the other one"  
-  **Output:**  
-  \`\`\`json
-  {
-    "multipleIntents": [
-      { "intent": "duplicate_event", "fields": { "target": "this event" } },
-      { "intent": "cancel_event", "fields": { "target": "other one" } }
-    ]
-  }
-  \`\`\`
-  
-  **Input:** "List my events and update their titles"  
-  **Output:**  
-  \`\`\`json
-  {
-    "multipleIntents": [
-      { "intent": "list_events", "fields": {} },
-      { "intent": "update_event_titles", "fields": {} }
-    ]
-  }
-  \`\`\`
-  
-  **Input:** "Create an event tomorrow"  
-  **Output:**  
-  \`\`\`json
-  { "multipleIntents": [] }
-  \`\`\`
-  
-  **Input:** "Cancel my meeting"  
-  **Output:**  
-  \`\`\`json
-  { "multipleIntents": [] }
-  \`\`\`
-  
-  ---
-  
-  ### Notes
-  - Be concise and deterministic — no explanations, reasoning, or text outside JSON.
-  - Output **must** be parseable JSON.
-  - If uncertain, err on the side of returning a single intent.
-  
-  `;
+    return buildMultipleIntentPrompt();
   }
 
   /**
@@ -288,11 +214,11 @@ class IntentProcessor {
             results.push({
               success: false,
               intent: intent.intent,
-              message: actionResult.error || "Action failed",
+              message: actionResult.error || getActionFailedResponse(),
             });
             allSuccessful = false;
             combinedMessage += `${i + 1}. ❌ ${intent.intent}: ${
-              actionResult.error || "Action failed"
+              actionResult.error || getActionFailedResponse()
             }\n`;
           }
         } catch (error) {
@@ -602,7 +528,7 @@ class IntentProcessor {
       return {
         success: true,
         type: "calendar_action",
-        message: `Here are the details and notes for your event:`,
+        message: getEventPreparationResponse(),
         data: {
           action: "prepare_event",
           event: result.event,
@@ -700,7 +626,7 @@ class IntentProcessor {
       if (calendarEvents.length === 0) {
         return {
           success: false,
-          message: "No events found in your calendar.",
+          message: getNoEventsFoundResponse(),
         };
       }
 
@@ -714,7 +640,6 @@ class IntentProcessor {
         calendarEvents,
         conversationHistory
       );
-      console.log("aiResult", aiResult);
 
       if (aiResult.success && aiResult.event) {
         return {
@@ -728,7 +653,7 @@ class IntentProcessor {
       // Multiple matches - return list for user to choose
       return {
         success: false,
-        message: `Multiple events found matching "${identifier}". Please be more specific:`,
+        message: getMultipleEventsFoundResponse(identifier),
         events: [],
         multipleMatches: true,
       };
@@ -736,7 +661,7 @@ class IntentProcessor {
       console.error("Error resolving event identifier:", error);
       return {
         success: false,
-        message: "Error searching for events. Please try again.",
+        message: getEventSearchErrorResponse(),
       };
     }
   }
@@ -863,16 +788,7 @@ class IntentProcessor {
    */
   async generateEventNotes(event) {
     try {
-      const prompt = `Generate helpful notes and preparation tips for this calendar event:
-      
-Title: ${event.summary}
-Date: ${event.start.dateTime || event.start.date}
-Location: ${event.location || "Not specified"}
-Description: ${event.description || "No description provided"}
-Attendees: ${event.attendees?.map((a) => a.email).join(", ") || "Not specified"}
-
-Provide 3-5 bullet points with practical preparation tips and talking points.`;
-
+      const prompt = generateEventNotesPrompt(event);
       const notes = await qwenService.generateChatResponse(prompt);
       return notes;
     } catch (error) {
@@ -981,21 +897,7 @@ Provide 3-5 bullet points with practical preparation tips and talking points.`;
       return {
         success: true,
         type: "chat",
-        message: `I can help you with calendar management tasks. Here's what I can do:
-
-📅 **Calendar Actions:**
-• Create events: "Schedule a meeting with John tomorrow at 2 PM"
-• Update events: "Change my 3 PM meeting to 4 PM"
-• Cancel events: "Cancel my meeting tomorrow"
-• Prepare for events: "What do I need for my presentation tomorrow?"
-• Create follow-ups: "Set up a follow-up meeting in 3 days"
-
-💡 **Tips:**
-• Always include a clear title for events so you can find them later
-• Specify dates and times clearly
-• I can add attendees, locations, and descriptions
-
-What would you like to do?`,
+        message: getInformationResponse(),
       };
     } catch (error) {
       return {
@@ -1013,25 +915,7 @@ What would you like to do?`,
       return {
         success: true,
         type: "chat",
-        message: `I'm your calendar assistant! Here's how to use me:
-
-**Creating Events:**
-"Create an event for me tomorrow with John at 13:00 to discuss the project"
-
-**Finding Events:**
-"Show me my meetings tomorrow"
-"What events do I have this week?"
-
-**Managing Events:**
-"Cancel my 3 PM meeting"
-"Move my meeting to 4 PM"
-"Add Sarah to my meeting tomorrow"
-
-**Getting Help:**
-"Help me prepare for my presentation tomorrow"
-"Set up a follow-up meeting in 3 days"
-
-Just tell me what you need in natural language!`,
+        message: getHelpRequestResponse(),
       };
     } catch (error) {
       return {
@@ -1050,8 +934,7 @@ Just tell me what you need in natural language!`,
       return {
         success: true,
         type: "chat",
-        message:
-          "I'm your calendar assistant! I can help you with:\n\n📅 Creating and managing calendar events\n📋 Finding your upcoming meetings\n✏️ Updating or canceling events\n\nWhat would you like to do with your calendar?",
+        message: getGeneralChatResponse(),
       };
     } catch (error) {
       return {
