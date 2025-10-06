@@ -1,14 +1,21 @@
 export interface Message {
   id: string;
   text: string;
-  sender: 'user' | 'assistant';
+  sender: "user" | "assistant";
   timestamp: Date;
-  type?: 'text' | 'event' | 'error';
+  type?: "text" | "event" | "error" | "events";
   data?: any;
 }
 
 export interface EventData {
-  action: 'create_event' | 'update_event' | 'cancel_event' | 'prepare_event' | 'followup_event' | 'calendar_info' | 'multiple_intents';
+  action:
+    | "create_event"
+    | "update_event"
+    | "cancel_event"
+    | "prepare_event"
+    | "followup_event"
+    | "calendar_info"
+    | "multiple_intents";
   event?: {
     id: string;
     summary: string;
@@ -81,4 +88,3 @@ export interface ChatState {
   isConnected: boolean;
   isCalendarLinked: boolean;
 }
-
