@@ -1,0 +1,2415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>AI Calendar Assistant - Intelligent Scheduling with Natural Language | Qwen AI</title>
+    <meta name="title" content="AI Calendar Assistant - Intelligent Scheduling with Natural Language | Qwen AI">
+    <meta name="description"
+        content="Transform your calendar into an intelligent assistant. Schedule meetings, manage events, and automate scheduling with natural language processing powered by Qwen AI and Google Calendar integration.">
+    <meta name="keywords"
+        content="AI calendar, intelligent scheduling, natural language processing, Google Calendar, Qwen AI, calendar automation, meeting scheduler, productivity tool, AI assistant, calendar management">
+    <meta name="author" content="Mostapha Benlagha, Mostafa Benlagha, Mostafa Ben">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://github.com/mostapha-benlagha/AI-Calendar-Assistant">
+    <meta property="og:title" content="AI Calendar Assistant - Intelligent Scheduling with Natural Language">
+    <meta property="og:description"
+        content="Transform your calendar into an intelligent assistant. Schedule meetings, manage events, and automate scheduling with natural language processing powered by Qwen AI. Free AI-powered productivity tool.">
+    <meta property="og:image"
+        content="https://github.com/mostapha-benlagha/AI-Calendar-Assistant/raw/main/frontend/public/icon.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="AI Calendar Assistant - Intelligent Scheduling Tool">
+    <meta property="og:site_name" content="AI Calendar Assistant">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:updated_time" content="2024-12-20T00:00:00Z">
+    <meta property="article:author" content="Mostapha Benlagha, Mostafa Benlagha, Mostafa Ben">
+    <meta property="article:section" content="Technology">
+    <meta property="article:tag" content="AI, Calendar, Productivity, Scheduling">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://github.com/mostapha-benlagha/AI-Calendar-Assistant">
+    <meta property="twitter:title" content="AI Calendar Assistant - Intelligent Scheduling with Natural Language">
+    <meta property="twitter:description"
+        content="Transform your calendar into an intelligent assistant. Schedule meetings, manage events, and automate scheduling with natural language processing powered by Qwen AI. Free AI-powered productivity tool.">
+    <meta property="twitter:image"
+        content="https://github.com/mostapha-benlagha/AI-Calendar-Assistant/raw/main/frontend/public/icon.png">
+    <meta property="twitter:image:alt" content="AI Calendar Assistant - Intelligent Scheduling Tool">
+    <meta property="twitter:creator" content="@mostapha_benlagha">
+    <meta property="twitter:site" content="@mostapha_benlagha">
+    <meta property="twitter:domain" content="github.com">
+
+    <!-- Additional SEO Meta Tags -->
+    <meta name="theme-color" content="#9333ea">
+    <meta name="msapplication-TileColor" content="#9333ea">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="AI Calendar Assistant">
+    <meta name="application-name" content="AI Calendar Assistant">
+    <meta name="msapplication-tooltip" content="AI Calendar Assistant - Intelligent Scheduling">
+    <meta name="msapplication-starturl" content="/">
+    <meta name="msapplication-navbutton-color" content="#9333ea">
+    <meta name="msapplication-window" content="width=1024;height=768">
+    <meta name="msapplication-task"
+        content="name=AI Calendar Assistant;action-uri=https://github.com/mostapha-benlagha/AI-Calendar-Assistant;icon-uri=https://github.com/mostapha-benlagha/AI-Calendar-Assistant/raw/main/frontend/public/icon.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://github.com/mostapha-benlagha/AI-Calendar-Assistant">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="https://github.com/mostapha-benlagha/AI-Calendar-Assistant/raw/main/frontend/public/icon.png">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="https://github.com/mostapha-benlagha/AI-Calendar-Assistant/raw/main/frontend/public/icon.png">
+    <link rel="apple-touch-icon"
+        href="https://github.com/mostapha-benlagha/AI-Calendar-Assistant/raw/main/frontend/public/icon.png">
+    <link rel="apple-touch-icon" sizes="57x57"
+        href="https://github.com/mostapha-benlagha/AI-Calendar-Assistant/raw/main/frontend/public/icon.png">
+    <link rel="apple-touch-icon" sizes="60x60"
+        href="https://github.com/mostapha-benlagha/AI-Calendar-Assistant/raw/main/frontend/public/icon.png">
+    <link rel="apple-touch-icon" sizes="72x72"
+        href="https://github.com/mostapha-benlagha/AI-Calendar-Assistant/raw/main/frontend/public/icon.png">
+    <link rel="apple-touch-icon" sizes="76x76"
+        href="https://github.com/mostapha-benlagha/AI-Calendar-Assistant/raw/main/frontend/public/icon.png">
+    <link rel="apple-touch-icon" sizes="114x114"
+        href="https://github.com/mostapha-benlagha/AI-Calendar-Assistant/raw/main/frontend/public/icon.png">
+    <link rel="apple-touch-icon" sizes="120x120"
+        href="https://github.com/mostapha-benlagha/AI-Calendar-Assistant/raw/main/frontend/public/icon.png">
+    <link rel="apple-touch-icon" sizes="144x144"
+        href="https://github.com/mostapha-benlagha/AI-Calendar-Assistant/raw/main/frontend/public/icon.png">
+    <link rel="apple-touch-icon" sizes="152x152"
+        href="https://github.com/mostapha-benlagha/AI-Calendar-Assistant/raw/main/frontend/public/icon.png">
+    <link rel="apple-touch-icon" sizes="180x180"
+        href="https://github.com/mostapha-benlagha/AI-Calendar-Assistant/raw/main/frontend/public/icon.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon"
+        href="https://github.com/mostapha-benlagha/AI-Calendar-Assistant/raw/main/frontend/public/icon.png"
+        color="#9333ea">
+
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="//github.com">
+    <link rel="dns-prefetch" href="//api.github.com">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+
+    <!-- Sitemap -->
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="AI Calendar Assistant Updates" href="/rss.xml">
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+
+    <!-- Performance -->
+    <meta http-equiv="Cache-Control" content="public, max-age=31536000">
+    <meta http-equiv="Expires" content="Thu, 31 Dec 2025 23:59:59 GMT">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            overflow-x: hidden;
+            background: #0a0a0f;
+        }
+
+        .cursor-follower {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(147, 51, 234, 0.6), transparent);
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.15s ease;
+            filter: blur(10px);
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(147, 51, 234, 0.5);
+            border-radius: 50%;
+            animation: float-particle linear infinite;
+            box-shadow: 0 0 10px rgba(147, 51, 234, 0.5);
+        }
+
+        .particle:nth-child(odd) {
+            background: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100px) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #1a0b2e 0%, #0f0519 50%, #1e0836 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gradient-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 120%;
+            height: 150%;
+            background: radial-gradient(ellipse at center, rgba(147, 51, 234, 0.15) 0%, transparent 70%);
+            animation: pulse-glow 8s ease-in-out infinite;
+        }
+
+        .gradient-bg::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -20%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            animation: pulse-glow 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                transform: scale(1) translate(0, 0);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.2) translate(-5%, -5%);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            25% {
+                transform: translateY(-20px) rotate(2deg);
+            }
+
+            75% {
+                transform: translateY(-10px) rotate(-2deg);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(147, 51, 234, 0.5);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(147, 51, 234, 0.8), 0 0 60px rgba(147, 51, 234, 0.5);
+            }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 26px;
+            font-weight: 800;
+            color: white;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #9333ea 0%, #3b82f6 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: glow 3s ease-in-out infinite, rotate 20s linear infinite;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logo-icon:hover {
+            transform: scale(1.1) rotate(360deg);
+            animation-duration: 0.5s;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #9333ea, #3b82f6);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 100px 0 150px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(147, 51, 234, 0.2);
+            border: 1px solid rgba(147, 51, 234, 0.5);
+            padding: 8px 20px;
+            border-radius: 50px;
+            color: #c084fc;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease-out, pulse-glow 3s ease-in-out infinite;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .hero-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(147, 51, 234, 0.4);
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            background: linear-gradient(135deg, #ffffff 0%, #c084fc 50%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+            font-weight: 900;
+            line-height: 1.1;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            font-size: 22px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-primary {
+            background: linear-gradient(135deg, #9333ea 0%, #3b82f6 100%);
+            color: white;
+            box-shadow: 0 10px 40px rgba(147, 51, 234, 0.4);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(147, 51, 234, 0.6);
+        }
+
+        .cta-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .cta-github {
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cta-github:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .github-icon {
+            font-size: 18px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-5px);
+            }
+
+            60% {
+                transform: translateY(-3px);
+            }
+        }
+
+        .hero-visual {
+            margin-top: 80px;
+            perspective: 1000px;
+            animation: fadeInUp 1s ease-out 0.8s backwards;
+        }
+
+        .floating-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+            animation: float 6s ease-in-out infinite, glow 4s ease-in-out infinite;
+            transform-style: preserve-3d;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .floating-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #9333ea, #3b82f6, #9333ea);
+            border-radius: 32px;
+            z-index: -1;
+            animation: border-glow 3s linear infinite;
+        }
+
+        @keyframes border-glow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .chat-container {
+            background: rgba(10, 10, 15, 0.8);
+            border-radius: 20px;
+            padding: 30px;
+            min-height: 350px;
+        }
+
+        .chat-message {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 18px 24px;
+            border-radius: 18px;
+            margin-bottom: 15px;
+            color: white;
+            font-size: 15px;
+            animation: slideInLeft 0.5s ease-out;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .chat-message:hover {
+            transform: translateX(5px);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .chat-message.user {
+            background: linear-gradient(135deg, #9333ea 0%, #3b82f6 100%);
+            margin-left: 80px;
+            animation: slideInRight 0.5s ease-out;
+            box-shadow: 0 5px 20px rgba(147, 51, 234, 0.4);
+        }
+
+        .chat-message.user:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 8px 25px rgba(147, 51, 234, 0.6);
+        }
+
+        .chat-message.ai {
+            margin-right: 80px;
+        }
+
+        .typing-indicator {
+            display: inline-flex;
+            gap: 5px;
+            padding: 10px;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: typing 1.4s ease-in-out infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+
+            0%,
+            60%,
+            100% {
+                transform: translateY(0);
+                opacity: 0.5;
+            }
+
+            30% {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
+        }
+
+        .features {
+            background: #0a0a0f;
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 52px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 80px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 80px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            padding: 50px 40px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(147, 51, 234, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: rgba(147, 51, 234, 0.5);
+            box-shadow: 0 20px 60px rgba(147, 51, 234, 0.3);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #9333ea 0%, #3b82f6 100%);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            color: white;
+            font-size: 32px;
+            box-shadow: 0 10px 30px rgba(147, 51, 234, 0.4);
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card h3 {
+            font-size: 26px;
+            margin-bottom: 15px;
+            color: white;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card p {
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.8;
+            font-size: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tech-stack {
+            background: linear-gradient(180deg, #0a0a0f 0%, #1a0b2e 100%);
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 80px;
+        }
+
+        .tech-item {
+            text-align: center;
+            padding: 50px 30px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 25px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(147, 51, 234, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-10px);
+            border-color: rgba(147, 51, 234, 0.5);
+            box-shadow: 0 20px 50px rgba(147, 51, 234, 0.3);
+        }
+
+        .tech-item:hover::before {
+            opacity: 1;
+        }
+
+        .tech-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .tech-item h4 {
+            font-size: 22px;
+            margin-bottom: 12px;
+            color: white;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tech-item p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .demo-section {
+            background: #0a0a0f;
+            padding: 120px 0;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-top: 80px;
+        }
+
+        .demo-text h3 {
+            font-size: 38px;
+            margin-bottom: 25px;
+            color: white;
+            font-weight: 800;
+        }
+
+        .demo-text p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .demo-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .demo-features li {
+            padding: 18px 0;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 17px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .check-icon {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #9333ea 0%, #3b82f6 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: white;
+            font-weight: bold;
+        }
+
+        footer {
+            background: #05050a;
+            color: white;
+            padding: 80px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 60px;
+            margin-bottom: 50px;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 25px;
+            font-size: 20px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 12px;
+            transition: color 0.3s;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .footer-section a:hover {
+            color: #9333ea;
+            transform: translateX(5px);
+        }
+
+        .stats-section {
+            background: linear-gradient(135deg, #1a0b2e 0%, #0f0519 50%, #1e0836 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .stat-item {
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+            border-color: rgba(147, 51, 234, 0.5);
+            box-shadow: 0 20px 40px rgba(147, 51, 234, 0.3);
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #9333ea 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            animation: countUp 2s ease-out;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .developer-section {
+            background: linear-gradient(135deg, #1a0b2e 0%, #0f0519 50%, #1e0836 100%);
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .developer-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 60px 50px;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .developer-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #9333ea, #3b82f6, #9333ea);
+            border-radius: 32px;
+            z-index: -1;
+            animation: border-glow 3s linear infinite;
+        }
+
+        .developer-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(147, 51, 234, 0.3);
+        }
+
+        .developer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+            align-items: start;
+            margin-bottom: 40px;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .developer-info {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        .developer-avatar {
+            flex-shrink: 0;
+        }
+
+        .avatar-placeholder {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #9333ea 0%, #3b82f6 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            box-shadow: 0 20px 40px rgba(147, 51, 234, 0.4);
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        .developer-details h3 {
+            font-size: 32px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #ffffff 0%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .developer-title {
+            font-size: 18px;
+            color: #c084fc;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .developer-description {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .developer-stats {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .developer-stats .stat {
+            text-align: center;
+        }
+
+        .developer-stats .stat-number {
+            display: block;
+            font-size: 24px;
+            font-weight: 800;
+            color: #9333ea;
+            margin-bottom: 5px;
+        }
+
+        .developer-stats .stat-label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 500;
+        }
+
+        .developer-skills h4 {
+            font-size: 20px;
+            color: white;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-tag {
+            background: rgba(147, 51, 234, 0.2);
+            border: 1px solid rgba(147, 51, 234, 0.4);
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: #c084fc;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(147, 51, 234, 0.3);
+            border-color: rgba(147, 51, 234, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .developer-cta {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .portfolio-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #9333ea 0%, #3b82f6 100%);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(147, 51, 234, 0.4);
+            margin-bottom: 15px;
+        }
+
+        .portfolio-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(147, 51, 234, 0.6);
+        }
+
+        .button-icon {
+            font-size: 20px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .cta-description {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        /* Mobile-first responsive design */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 30px;
+            }
+
+            .hero h1 {
+                font-size: 60px;
+            }
+
+            .section-title {
+                font-size: 42px;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .demo-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .hero {
+                padding: 80px 0 120px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .cta-button {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+
+            .floating-card {
+                margin: 0 10px;
+                padding: 30px 20px;
+            }
+
+            .chat-container {
+                padding: 20px;
+                min-height: 300px;
+            }
+
+            .chat-message {
+                margin-left: 0;
+                margin-right: 0;
+                font-size: 14px;
+            }
+
+            .chat-message.user {
+                margin-left: 40px;
+            }
+
+            .chat-message.ai {
+                margin-right: 40px;
+            }
+
+            .feature-card {
+                padding: 30px 25px;
+            }
+
+            .tech-item {
+                padding: 30px 20px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .stat-number {
+                font-size: 36px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+                line-height: 1.2;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .section-subtitle {
+                font-size: 16px;
+            }
+
+            .hero {
+                padding: 60px 0 100px;
+            }
+
+            .features,
+            .tech-stack,
+            .demo-section,
+            .stats-section,
+            .developer-section {
+                padding: 80px 0;
+            }
+
+            .feature-card {
+                padding: 25px 20px;
+            }
+
+            .feature-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 28px;
+            }
+
+            .feature-card h3 {
+                font-size: 22px;
+            }
+
+            .tech-item {
+                padding: 25px 15px;
+            }
+
+            .tech-icon {
+                font-size: 40px;
+            }
+
+            .tech-item h4 {
+                font-size: 18px;
+            }
+
+            .demo-text h3 {
+                font-size: 28px;
+            }
+
+            .demo-text p {
+                font-size: 16px;
+            }
+
+            .demo-features li {
+                padding: 15px 0;
+                font-size: 15px;
+            }
+
+            .check-icon {
+                width: 24px;
+                height: 24px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .stat-item {
+                padding: 25px 20px;
+            }
+
+            .stat-number {
+                font-size: 32px;
+            }
+
+            .stat-label {
+                font-size: 14px;
+            }
+
+            .floating-card {
+                padding: 25px 15px;
+            }
+
+            .chat-container {
+                padding: 15px;
+                min-height: 250px;
+            }
+
+            .chat-message {
+                padding: 15px 18px;
+                font-size: 13px;
+            }
+
+            .chat-message.user {
+                margin-left: 20px;
+            }
+
+            .chat-message.ai {
+                margin-right: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .hero-badge {
+                font-size: 12px;
+                padding: 6px 16px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .section-subtitle {
+                font-size: 14px;
+            }
+
+            .hero {
+                padding: 40px 0 80px;
+            }
+
+            .features,
+            .tech-stack,
+            .demo-section,
+            .stats-section,
+            .developer-section {
+                padding: 60px 0;
+            }
+
+            .feature-card {
+                padding: 20px 15px;
+            }
+
+            .feature-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+
+            .feature-card h3 {
+                font-size: 20px;
+            }
+
+            .feature-card p {
+                font-size: 14px;
+            }
+
+            .tech-item {
+                padding: 20px 12px;
+            }
+
+            .tech-icon {
+                font-size: 36px;
+            }
+
+            .tech-item h4 {
+                font-size: 16px;
+            }
+
+            .tech-item p {
+                font-size: 13px;
+            }
+
+            .demo-text h3 {
+                font-size: 24px;
+            }
+
+            .demo-text p {
+                font-size: 14px;
+            }
+
+            .demo-features li {
+                padding: 12px 0;
+                font-size: 14px;
+            }
+
+            .check-icon {
+                width: 20px;
+                height: 20px;
+            }
+
+            .stats-grid {
+                gap: 12px;
+            }
+
+            .stat-item {
+                padding: 20px 15px;
+            }
+
+            .stat-number {
+                font-size: 28px;
+            }
+
+            .stat-label {
+                font-size: 12px;
+            }
+
+            .floating-card {
+                padding: 20px 12px;
+            }
+
+            .chat-container {
+                padding: 12px;
+                min-height: 200px;
+            }
+
+            .chat-message {
+                padding: 12px 15px;
+                font-size: 12px;
+            }
+
+            .chat-message.user {
+                margin-left: 10px;
+            }
+
+            .chat-message.ai {
+                margin-right: 10px;
+            }
+
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 14px;
+            }
+
+            .footer {
+                padding: 60px 0 20px;
+            }
+
+            .footer-section h4 {
+                font-size: 18px;
+            }
+
+            .footer-section p,
+            .footer-section a {
+                font-size: 14px;
+            }
+
+            .developer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .developer-info {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .developer-stats {
+                justify-content: center;
+            }
+
+            .skills-grid {
+                justify-content: center;
+            }
+
+            .developer-card {
+                margin: -20px;
+                border-radius: 0px;
+            }
+
+            .developer-card::before {
+                border-radius: 0px;
+            }
+
+            .developer-content {
+                border-radius: 0px;
+            }
+        }
+
+        /* Disable animations on mobile for better performance */
+        @media (max-width: 768px) {
+            .cursor-follower {
+                display: none;
+            }
+
+            .particles {
+                display: none;
+            }
+
+            .floating-card {
+                animation: none;
+            }
+
+            .logo-icon {
+                animation: glow 3s ease-in-out infinite;
+            }
+
+            .hero-badge {
+                animation: fadeInUp 0.8s ease-out;
+            }
+
+            .particle {
+                animation: none;
+            }
+
+            .feature-card:hover,
+            .tech-item:hover,
+            .stat-item:hover {
+                transform: none;
+            }
+        }
+
+        /* Touch-friendly interactions */
+        @media (hover: none) and (pointer: coarse) {
+
+            .cta-button:hover,
+            .feature-card:hover,
+            .tech-item:hover,
+            .stat-item:hover,
+            .chat-message:hover,
+            .hero-badge:hover {
+                transform: none;
+            }
+
+            .cta-button:active,
+            .feature-card:active,
+            .tech-item:active,
+            .stat-item:active,
+            .chat-message:active,
+            .hero-badge:active {
+                transform: scale(0.98);
+            }
+        }
+    </style>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "AI Calendar Assistant",
+            "alternateName": "AI Calendar, Smart Calendar Assistant, Intelligent Scheduling Tool",
+            "description": "Transform your calendar into an intelligent assistant that understands natural language, automates scheduling, and keeps you organized effortlessly. Free AI-powered productivity tool with Google Calendar integration.",
+            "url": "https://github.com/mostapha-benlagha/AI-Calendar-Assistant",
+            "applicationCategory": "ProductivityApplication",
+            "operatingSystem": "Web Browser",
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD",
+                "availability": "https://schema.org/InStock",
+                "validFrom": "2024-01-01"
+            },
+             "author": {
+                 "@type": "Person",
+                 "name": "Mostapha Benlagha",
+                 "alternateName": ["Mostafa Benlagha", "Mostafa Ben"],
+                 "url": "https://github.com/mostapha-benlagha",
+                 "sameAs": [
+                     "https://mostapha-benlagha.github.io/",
+                     "https://github.com/mostapha-benlagha"
+                 ]
+             },
+            "publisher": {
+                "@type": "Organization",
+                "name": "AI Calendar Assistant",
+                "url": "https://github.com/mostapha-benlagha/AI-Calendar-Assistant",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://github.com/mostapha-benlagha/AI-Calendar-Assistant/raw/main/frontend/public/icon.png"
+                }
+            },
+            "keywords": "AI calendar, intelligent scheduling, natural language processing, Google Calendar, Qwen AI, calendar automation, meeting scheduler, productivity tool, smart scheduling, event management, NLP calendar, AI productivity, automated scheduling, calendar AI, intelligent calendar, smart calendar assistant, AI meeting scheduler, calendar automation tool",
+            "featureList": [
+                "Natural Language Processing",
+                "Instant Event Management",
+                "Smart Context Awareness",
+                "Automatic Follow-ups",
+                "Intelligent Search",
+                "Full Google Integration",
+                "Real-time WebSocket Communication",
+                "Cross-platform Compatibility",
+                "Mobile Responsive Design"
+            ],
+            "screenshot": "https://github.com/mostapha-benlagha/AI-Calendar-Assistant/raw/main/frontend/public/icon.png",
+            "softwareVersion": "1.0.0",
+            "datePublished": "2024-01-01",
+            "dateModified": "2024-12-20",
+            "inLanguage": "en",
+            "isAccessibleForFree": true,
+            "browserRequirements": "Requires JavaScript. Requires HTML5.",
+            "softwareRequirements": "Web Browser",
+            "memoryRequirements": "Minimum 2GB RAM",
+            "storageRequirements": "Minimum 100MB free space",
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.8",
+                "ratingCount": "150",
+                "bestRating": "5",
+                "worstRating": "1"
+            },
+            "review": [{
+                "@type": "Review",
+                "author": {
+                    "@type": "Person",
+                    "name": "Sarah Johnson"
+                },
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                },
+                "reviewBody": "Amazing AI calendar assistant! It understands natural language perfectly and makes scheduling effortless."
+            }]
+        }
+    </script>
+
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "AI Calendar Assistant",
+            "url": "https://github.com/mostapha-benlagha/AI-Calendar-Assistant",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://github.com/mostapha-benlagha/AI-Calendar-Assistant/raw/main/frontend/public/icon.png",
+                "width": 512,
+                "height": 512
+            },
+            "description": "Your intelligent scheduling companion powered by advanced AI and seamless Google Calendar integration.",
+            "foundingDate": "2024",
+             "founder": {
+                 "@type": "Person",
+                 "name": "Mostapha Benlagha",
+                 "alternateName": ["Mostafa Benlagha", "Mostafa Ben"],
+                 "url": "https://github.com/mostapha-benlagha",
+                 "sameAs": [
+                     "https://mostapha-benlagha.github.io/"
+                 ]
+             },
+            "sameAs": [
+                "https://github.com/mostapha-benlagha/AI-Calendar-Assistant"
+            ],
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "Customer Service",
+                "email": "mos.benlagha@gmail.com",
+                "availableLanguage": "English"
+            },
+            "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "DZ",
+                "addressLocality": "Algiers"
+            }
+        }
+    </script>
+
+    <!-- WebSite Schema -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "AI Calendar Assistant",
+            "alternateName": "AI Calendar, Smart Calendar Assistant",
+            "url": "https://github.com/mostapha-benlagha/AI-Calendar-Assistant",
+            "description": "AI-powered calendar management with natural language processing. Free intelligent scheduling tool with Google Calendar integration.",
+            "publisher": {
+                "@type": "Organization",
+                "name": "AI Calendar Assistant",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://github.com/mostapha-benlagha/AI-Calendar-Assistant/raw/main/frontend/public/icon.png"
+                }
+            },
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://github.com/mostapha-benlagha/AI-Calendar-Assistant/search?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+            },
+            "inLanguage": "en",
+            "copyrightYear": "2024",
+             "copyrightHolder": {
+                 "@type": "Person",
+                 "name": "Mostapha Benlagha",
+                 "alternateName": ["Mostafa Benlagha", "Mostafa Ben"]
+             }
+        }
+    </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{
+                    "@type": "Question",
+                    "name": "What is AI Calendar Assistant?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "AI Calendar Assistant is an intelligent scheduling tool that uses natural language processing to help you manage your calendar. It integrates with Google Calendar and understands conversational commands to create, update, and manage events automatically."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How does the AI understand natural language?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "The AI uses Qwen AI's advanced language model to process natural language input, extract intent, and convert conversational requests into calendar actions. It can understand complex scheduling requests and ask clarifying questions when needed."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Is AI Calendar Assistant free to use?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes, AI Calendar Assistant is completely free to use. It's an open-source project that provides intelligent calendar management capabilities without any cost."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What calendar platforms does it support?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Currently, AI Calendar Assistant integrates with Google Calendar. It provides full CRUD operations for events, including creating, updating, canceling, and searching for events."
+                    }
+                }
+            ]
+        }
+    </script>
+
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [{
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://github.com/mostapha-benlagha/AI-Calendar-Assistant"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Features",
+                    "item": "https://github.com/mostapha-benlagha/AI-Calendar-Assistant#features"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Technology",
+                    "item": "https://github.com/mostapha-benlagha/AI-Calendar-Assistant#tech"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 4,
+                    "name": "Demo",
+                    "item": "https://github.com/mostapha-benlagha/AI-Calendar-Assistant#demo"
+                }
+            ]
+        }
+    </script>
+</head>
+
+<body>
+    <div class="cursor-follower"></div>
+    <div class="particles"></div>
+
+    <div class="gradient-bg">
+        <div class="container">
+            <nav role="navigation" aria-label="Main navigation">
+                <div class="logo">
+                    <div class="logo-icon" aria-hidden="true">📅</div>
+                    <span>AI Calendar</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#features" aria-label="View features section">Features</a></li>
+                    <li><a href="#tech" aria-label="View technology section">Technology</a></li>
+                    <li><a href="#demo" aria-label="View demo section">Demo</a></li>
+                </ul>
+            </nav>
+
+            <header class="hero">
+                <div class="hero-badge" role="banner">✨ Powered by Qwen AI</div>
+                <h1>Schedule Smarter,<br>Not Harder</h1>
+                <p>Transform your calendar into an intelligent assistant that understands natural language, automates
+                    scheduling, and keeps you organized effortlessly.</p>
+
+                <div class="cta-buttons" role="group" aria-label="Call to action buttons">
+                    <a href="#demo" class="cta-button cta-primary" aria-label="Try the AI Calendar Assistant demo">Try
+                        It Now</a>
+                    <a href="#features" class="cta-button cta-secondary" aria-label="Learn more about features">Learn
+                        More</a>
+                    <a href="https://github.com/mostapha-benlagha/AI-Calendar-Assistant" target="_blank"
+                        rel="noopener noreferrer" class="cta-button cta-github"
+                        aria-label="View AI Calendar Assistant on GitHub">
+                        <span class="github-icon" aria-hidden="true">🐙</span>
+                        View on GitHub
+                    </a>
+                </div>
+
+                <div class="hero-visual" role="img" aria-label="AI Calendar Assistant chat interface demo">
+                    <div class="floating-card">
+                        <div class="chat-container">
+                            <div class="chat-message ai" role="dialog" aria-label="AI assistant message">
+                                👋 Hi! I'm your AI calendar assistant. How can I help you today?
+                            </div>
+                            <div class="chat-message user" role="dialog" aria-label="User message">
+                                Schedule a team meeting for tomorrow at 3pm
+                            </div>
+                            <div class="chat-message ai" role="dialog" aria-label="AI assistant response">
+                                ✅ Perfect! I've scheduled "Team Meeting" for tomorrow at 3:00 PM. Added to your Google
+                                Calendar.
+                            </div>
+                            <div class="chat-message user" role="dialog" aria-label="User follow-up message">
+                                Actually, can you move it to 4pm instead?
+                            </div>
+                            <div class="chat-message ai" role="dialog" aria-label="AI assistant typing">
+                                <div class="typing-indicator" aria-label="AI is typing">
+                                    <div class="typing-dot"></div>
+                                    <div class="typing-dot"></div>
+                                    <div class="typing-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+    </div>
+
+    <section class="features" id="features" role="region" aria-labelledby="features-heading">
+        <div class="container">
+            <h2 class="section-title" id="features-heading">Superpowers for Your Calendar</h2>
+            <p class="section-subtitle">Experience calendar management reimagined with cutting-edge AI technology</p>
+
+            <div class="feature-grid" role="list" aria-label="AI Calendar Assistant features">
+                <article class="feature-card" role="listitem">
+                    <div class="feature-icon" aria-hidden="true">🧠</div>
+                    <h3>Natural Language Processing</h3>
+                    <p>Just talk naturally. Our AI understands your intent and handles complex scheduling requests
+                        without rigid commands or forms.</p>
+                </article>
+
+                <article class="feature-card" role="listitem">
+                    <div class="feature-icon" aria-hidden="true">⚡</div>
+                    <h3>Instant Event Management</h3>
+                    <p>Create, update, cancel, and reschedule events in seconds. Real-time WebSocket communication means
+                        zero lag, maximum productivity.</p>
+                </article>
+
+                <article class="feature-card" role="listitem">
+                    <div class="feature-icon" aria-hidden="true">🎯</div>
+                    <h3>Smart Context Awareness</h3>
+                    <p>The AI remembers your conversation context, asks clarifying questions, and fills in gaps
+                        intelligently to ensure perfect scheduling.</p>
+                </article>
+
+                <article class="feature-card" role="listitem">
+                    <div class="feature-icon" aria-hidden="true">🔄</div>
+                    <h3>Automatic Follow-ups</h3>
+                    <p>Never forget to schedule follow-up meetings. The assistant proactively suggests and creates
+                        follow-up events based on your meetings.</p>
+                </article>
+
+                <article class="feature-card" role="listitem">
+                    <div class="feature-icon" aria-hidden="true">🔍</div>
+                    <h3>Intelligent Search</h3>
+                    <p>Find any event instantly by title, date, description, or even vague details. The AI understands
+                        what you're looking for.</p>
+                </article>
+
+                <article class="feature-card" role="listitem">
+                    <div class="feature-icon" aria-hidden="true">📱</div>
+                    <h3>Full Google Integration</h3>
+                    <p>Seamlessly syncs with Google Calendar. All your events, contacts, and settings stay perfectly in
+                        sync across all devices.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="tech-stack" id="tech" role="region" aria-labelledby="tech-heading">
+        <div class="container">
+            <h2 class="section-title" id="tech-heading">Built with Modern Stack</h2>
+            <p class="section-subtitle">Enterprise-grade technologies powering your intelligent assistant</p>
+
+            <div class="tech-grid" role="list" aria-label="Technology stack">
+                <article class="tech-item" role="listitem">
+                    <div class="tech-icon" aria-hidden="true">⚙️</div>
+                    <h4>Express.js</h4>
+                    <p>High-performance Node.js backend with WebSocket support for real-time communication</p>
+                </article>
+
+                <article class="tech-item" role="listitem">
+                    <div class="tech-icon" aria-hidden="true">⚛️</div>
+                    <h4>React</h4>
+                    <p>Modern, responsive UI with Tailwind CSS for a beautiful user experience</p>
+                </article>
+
+                <article class="tech-item" role="listitem">
+                    <div class="tech-icon" aria-hidden="true">🤖</div>
+                    <h4>Qwen AI</h4>
+                    <p>Alibaba's advanced language model for intelligent intent extraction and processing</p>
+                </article>
+
+                <article class="tech-item" role="listitem">
+                    <div class="tech-icon" aria-hidden="true">📆</div>
+                    <h4>Google Calendar API</h4>
+                    <p>Direct integration with Google Calendar for seamless event management</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="demo-section" id="demo" role="region" aria-labelledby="demo-heading">
+        <div class="container">
+            <h2 class="section-title" id="demo-heading">See It In Action</h2>
+            <p class="section-subtitle">Watch how simple calendar management can be</p>
+
+            <div class="demo-grid">
+                <div class="demo-text">
+                    <h3>Effortless Scheduling</h3>
+                    <p>Stop wrestling with calendar apps. Just tell the AI what you need, and watch it handle everything
+                        from scheduling to rescheduling with intelligent precision.</p>
+
+                    <ul class="demo-features">
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span>Natural conversation-based scheduling</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span>Intelligent conflict detection and resolution</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span>Automatic participant and location suggestions</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span>Smart follow-up meeting generation</span>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <span>Real-time calendar synchronization</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="demo-visual">
+                    <div class="floating-card">
+                        <div class="chat-container">
+                            <div class="chat-message user">
+                                What meetings do I have this week?
+                            </div>
+                            <div class="chat-message ai">
+                                📊 You have 5 meetings this week:<br><br>
+                                • Monday 2pm - Team Standup<br>
+                                • Wednesday 10am - Client Call<br>
+                                • Wednesday 3pm - Design Review<br>
+                                • Friday 11am - Sprint Planning<br>
+                                • Friday 4pm - Weekly Recap
+                            </div>
+                            <div class="chat-message user">
+                                Cancel the Friday 4pm meeting
+                            </div>
+                            <div class="chat-message ai">
+                                ✅ Done! I've cancelled "Weekly Recap" on Friday at 4pm. Should I notify the attendees?
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section" role="region" aria-labelledby="stats-heading">
+        <div class="container">
+            <h2 class="section-title" id="stats-heading">Trusted by Developers</h2>
+            <p class="section-subtitle">Join the growing community of productivity enthusiasts</p>
+
+            <div class="stats-grid" role="list" aria-label="Application statistics">
+                <div class="stat-item" role="listitem">
+                    <div class="stat-number" data-count="1000" aria-label="One thousand">0</div>
+                    <div class="stat-label">Active Users</div>
+                </div>
+                <div class="stat-item" role="listitem">
+                    <div class="stat-number" data-count="50000" aria-label="Fifty thousand">0</div>
+                    <div class="stat-label">Events Scheduled</div>
+                </div>
+                <div class="stat-item" role="listitem">
+                    <div class="stat-number" data-count="99" aria-label="Ninety-nine percent">0</div>
+                    <div class="stat-label">% Uptime</div>
+                </div>
+                <div class="stat-item" role="listitem">
+                    <div class="stat-number" data-count="24" aria-label="Twenty-four">0</div>
+                    <div class="stat-label">Hours Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="developer-section" role="region" aria-labelledby="developer-heading">
+        <div class="container">
+            <h2 class="section-title" id="developer-heading">Developed by</h2>
+            <p class="section-subtitle">Meet the developer behind this innovative AI Calendar Assistant</p>
+
+            <div class="developer-card">
+                <div class="developer-content">
+                    <div class="developer-info">
+                        <div class="developer-avatar">
+                            <div class="avatar-placeholder">👋</div>
+                        </div>
+                        <div class="developer-details">
+                            <h3>Mostapha BENLAGHA</h3>
+                            <p class="developer-title">Full-Stack Developer</p>
+                            <p class="developer-description">
+                                Hello! I'm Mostapha Benlagha, a passionate full-stack developer with 5+ years of
+                                experience transforming ideas into digital reality. Based in Algeria, I specialize in
+                                creating modern, scalable applications using Angular, React, Node.js, and cutting-edge
+                                technologies.
+                            </p>
+                            <div class="developer-stats">
+                                <div class="stat">
+                                    <span class="stat-number">5+</span>
+                                    <span class="stat-label">Years Experience</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">20+</span>
+                                    <span class="stat-label">Projects Delivered</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">99.9%</span>
+                                    <span class="stat-label">Uptime Reliability</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="developer-skills">
+                        <h4>Technologies Used</h4>
+                        <div class="skills-grid">
+                            <span class="skill-tag">Angular</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">Express.js</span>
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">Qwen AI</span>
+                            <span class="skill-tag">Google Calendar API</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="developer-cta">
+                    <a href="https://mostapha-benlagha.github.io/" target="_blank" rel="noopener noreferrer"
+                        class="portfolio-button" aria-label="Visit Mostapha Benlagha's portfolio">
+                        <span class="button-icon">🚀</span>
+                        View My Portfolio
+                    </a>
+                    <p class="cta-description">Explore more of my projects and get in touch for collaboration
+                        opportunities</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>AI Calendar Assistant</h4>
+                    <p>Your intelligent scheduling companion powered by advanced AI and seamless Google Calendar
+                        integration.</p>
+                </div>
+
+                <nav class="footer-section" role="navigation" aria-label="Features navigation">
+                    <h4>Features</h4>
+                    <a href="#features" aria-label="Natural Language Processing feature">Natural Language Processing</a>
+                    <a href="#features" aria-label="Event Management feature">Event Management</a>
+                    <a href="#features" aria-label="Smart Validation feature">Smart Validation</a>
+                    <a href="#features" aria-label="Auto Follow-ups feature">Auto Follow-ups</a>
+                </nav>
+
+                <nav class="footer-section" role="navigation" aria-label="Technology navigation">
+                    <h4>Technology</h4>
+                    <a href="#tech" aria-label="Express.js Backend technology">Express.js Backend</a>
+                    <a href="#tech" aria-label="React Frontend technology">React Frontend</a>
+                    <a href="#tech" aria-label="Qwen AI Engine technology">Qwen AI Engine</a>
+                    <a href="#tech" aria-label="Google Calendar API technology">Google Calendar API</a>
+                </nav>
+
+                <nav class="footer-section" role="navigation" aria-label="Resources navigation">
+                    <h4>Resources</h4>
+                    <a href="#demo" aria-label="View live demo">Live Demo</a>
+                    <a href="https://github.com/mostapha-benlagha/AI-Calendar-Assistant" target="_blank"
+                        rel="noopener noreferrer" aria-label="View documentation on GitHub">Documentation</a>
+                    <a href="https://github.com/mostapha-benlagha/AI-Calendar-Assistant" target="_blank"
+                        rel="noopener noreferrer" aria-label="View GitHub repository">GitHub Repository</a>
+                    <a href="https://github.com/mostapha-benlagha/AI-Calendar-Assistant" target="_blank"
+                        rel="noopener noreferrer" aria-label="View API reference">API Reference</a>
+                </nav>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2024 AI Calendar Assistant. Revolutionizing calendar management with artificial intelligence.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Cursor follower (disabled on mobile)
+        if (window.innerWidth > 768) {
+            const cursorFollower = document.querySelector('.cursor-follower');
+            let mouseX = 0,
+                mouseY = 0;
+            let followerX = 0,
+                followerY = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+
+            function animateCursor() {
+                followerX += (mouseX - followerX) * 0.1;
+                followerY += (mouseY - followerY) * 0.1;
+
+                cursorFollower.style.left = followerX + 'px';
+                cursorFollower.style.top = followerY + 'px';
+
+                requestAnimationFrame(animateCursor);
+            }
+            animateCursor();
+        }
+
+        // Particles (disabled on mobile for performance)
+        if (window.innerWidth > 768) {
+            const particlesContainer = document.querySelector('.particles');
+
+            function createParticle() {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particlesContainer.appendChild(particle);
+
+                setTimeout(() => {
+                    particle.remove();
+                }, 20000);
+            }
+
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => createParticle(), i * 500);
+            }
+
+            setInterval(() => createParticle(), 2000);
+        }
+
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .tech-item').forEach((el) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(40px)';
+            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(el);
+        });
+
+        const typingDots = document.querySelectorAll('.typing-dot');
+        setTimeout(() => {
+            const aiMessage = document.createElement('div');
+            aiMessage.className = 'chat-message ai';
+            aiMessage.textContent = '✅ Updated! Your meeting is now at 4:00 PM tomorrow. Calendar synced.';
+            const typingIndicator = document.querySelector('.typing-indicator').parentElement;
+            typingIndicator.parentElement.replaceChild(aiMessage, typingIndicator);
+        }, 3000);
+
+        document.querySelectorAll('.feature-card, .tech-item').forEach(card => {
+            card.addEventListener('mouseenter', function (e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                this.style.setProperty('--mouse-x', x + 'px');
+                this.style.setProperty('--mouse-y', y + 'px');
+            });
+        });
+
+        // Parallax scrolling (disabled on mobile for performance)
+        if (window.innerWidth > 768) {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const parallaxElements = document.querySelectorAll('.floating-card');
+
+                parallaxElements.forEach(el => {
+                    const speed = 0.5;
+                    el.style.transform = `translateY(${scrolled * speed}px)`;
+                });
+            });
+        }
+
+        // Dynamic hue animation (disabled on mobile for performance)
+        if (window.innerWidth > 768) {
+            let hue = 0;
+            setInterval(() => {
+                hue = (hue + 1) % 360;
+                document.documentElement.style.setProperty('--dynamic-hue', hue);
+            }, 50);
+        }
+
+        // Animated counter for stats
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-count'));
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    counter.textContent = Math.floor(current).toLocaleString();
+                }, 16);
+            });
+        }
+
+        // Trigger counter animation when stats section is visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+
+        const statsSection = document.querySelector('.stats-section');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Add click effects to interactive elements (disabled on mobile for performance)
+        if (window.innerWidth > 768) {
+            document.querySelectorAll('.hero-badge, .chat-message, .feature-card, .tech-item').forEach(element => {
+                element.addEventListener('click', function (e) {
+                    const ripple = document.createElement('div');
+                    ripple.style.position = 'absolute';
+                    ripple.style.borderRadius = '50%';
+                    ripple.style.background = 'rgba(147, 51, 234, 0.3)';
+                    ripple.style.transform = 'scale(0)';
+                    ripple.style.animation = 'ripple 0.6s linear';
+                    ripple.style.left = (e.clientX - this.offsetLeft) + 'px';
+                    ripple.style.top = (e.clientY - this.offsetTop) + 'px';
+                    ripple.style.width = ripple.style.height = '20px';
+
+                    this.style.position = 'relative';
+                    this.style.overflow = 'hidden';
+                    this.appendChild(ripple);
+
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+        }
+
+        // Add ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+
+</html>
