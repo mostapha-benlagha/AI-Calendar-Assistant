@@ -1653,16 +1653,16 @@
                 "availability": "https://schema.org/InStock",
                 "validFrom": "2024-01-01"
             },
-             "author": {
-                 "@type": "Person",
-                 "name": "Mostapha Benlagha",
-                 "alternateName": ["Mostafa Benlagha", "Mostafa Ben"],
-                 "url": "https://github.com/mostapha-benlagha",
-                 "sameAs": [
-                     "https://mostapha-benlagha.github.io/",
-                     "https://github.com/mostapha-benlagha"
-                 ]
-             },
+            "author": {
+                "@type": "Person",
+                "name": "Mostapha Benlagha",
+                "alternateName": ["Mostafa Benlagha", "Mostafa Ben"],
+                "url": "https://github.com/mostapha-benlagha",
+                "sameAs": [
+                    "https://mostapha-benlagha.github.io/",
+                    "https://github.com/mostapha-benlagha"
+                ]
+            },
             "publisher": {
                 "@type": "Organization",
                 "name": "AI Calendar Assistant",
@@ -1732,15 +1732,15 @@
             },
             "description": "Your intelligent scheduling companion powered by advanced AI and seamless Google Calendar integration.",
             "foundingDate": "2024",
-             "founder": {
-                 "@type": "Person",
-                 "name": "Mostapha Benlagha",
-                 "alternateName": ["Mostafa Benlagha", "Mostafa Ben"],
-                 "url": "https://github.com/mostapha-benlagha",
-                 "sameAs": [
-                     "https://mostapha-benlagha.github.io/"
-                 ]
-             },
+            "founder": {
+                "@type": "Person",
+                "name": "Mostapha Benlagha",
+                "alternateName": ["Mostafa Benlagha", "Mostafa Ben"],
+                "url": "https://github.com/mostapha-benlagha",
+                "sameAs": [
+                    "https://mostapha-benlagha.github.io/"
+                ]
+            },
             "sameAs": [
                 "https://github.com/mostapha-benlagha/AI-Calendar-Assistant"
             ],
@@ -1782,11 +1782,11 @@
             },
             "inLanguage": "en",
             "copyrightYear": "2024",
-             "copyrightHolder": {
-                 "@type": "Person",
-                 "name": "Mostapha Benlagha",
-                 "alternateName": ["Mostafa Benlagha", "Mostafa Ben"]
-             }
+            "copyrightHolder": {
+                "@type": "Person",
+                "name": "Mostapha Benlagha",
+                "alternateName": ["Mostafa Benlagha", "Mostafa Ben"]
+            }
         }
     </script>
 
@@ -2126,15 +2126,15 @@
                             </p>
                             <div class="developer-stats">
                                 <div class="stat">
-                                    <span class="stat-number">5+</span>
+                                    <span class="stat-number" data-count="5">0</span>
                                     <span class="stat-label">Years Experience</span>
                                 </div>
                                 <div class="stat">
-                                    <span class="stat-number">20+</span>
+                                    <span class="stat-number" data-count="20">0</span>
                                     <span class="stat-label">Projects Delivered</span>
                                 </div>
                                 <div class="stat">
-                                    <span class="stat-number">99.9%</span>
+                                    <span class="stat-number" data-count="99.9">0</span>
                                     <span class="stat-label">Uptime Reliability</span>
                                 </div>
                             </div>
@@ -2340,10 +2340,16 @@
         function animateCounters() {
             const counters = document.querySelectorAll('.stat-number');
             counters.forEach(counter => {
-                const target = parseInt(counter.getAttribute('data-count'));
+                const target = parseFloat(counter.getAttribute('data-count'));
                 const duration = 2000;
                 const increment = target / (duration / 16);
                 let current = 0;
+
+                // Determine suffix based on target value
+                let suffix = '';
+                if (target === 5) suffix = '+';
+                else if (target === 20) suffix = '+';
+                else if (target === 99.9) suffix = '%';
 
                 const timer = setInterval(() => {
                     current += increment;
@@ -2351,7 +2357,18 @@
                         current = target;
                         clearInterval(timer);
                     }
-                    counter.textContent = Math.floor(current).toLocaleString();
+
+                    // Format the number based on the target value
+                    let displayValue;
+                    if (target >= 1000) {
+                        displayValue = Math.floor(current).toLocaleString();
+                    } else if (target >= 1) {
+                        displayValue = Math.floor(current);
+                    } else {
+                        displayValue = current.toFixed(1);
+                    }
+
+                    counter.textContent = displayValue + suffix;
                 }, 16);
             });
         }
@@ -2371,6 +2388,12 @@
         const statsSection = document.querySelector('.stats-section');
         if (statsSection) {
             statsObserver.observe(statsSection);
+        }
+
+        // Also trigger counter animation when developer section is visible
+        const developerSection = document.querySelector('.developer-section');
+        if (developerSection) {
+            statsObserver.observe(developerSection);
         }
 
         // Add click effects to interactive elements (disabled on mobile for performance)
