@@ -1,0 +1,30 @@
+{
+  "name": "ai-calendar-landing",
+  "version": "1.0.0",
+  "description": "AI Calendar Assistant Landing Page",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8888",
+    "dev": "python -m http.server 8888",
+    "build": "echo 'Static site - no build required'",
+    "deploy": "netlify deploy --prod",
+    "deploy:preview": "netlify deploy"
+  },
+  "keywords": [
+    "ai",
+    "calendar",
+    "assistant",
+    "landing-page",
+    "netlify"
+  ],
+  "author": "Mostapha Benlagha",
+  "license": "MIT",
+  "devDependencies": {
+    "netlify-cli": "^17.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mostapha-benlagha/AI-Calendar-Assistant"
+  },
+  "homepage": "https://github.com/mostapha-benlagha/AI-Calendar-Assistant"
+}

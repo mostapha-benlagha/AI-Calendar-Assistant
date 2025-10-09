@@ -1,0 +1,57 @@
+{
+  "name": "AI Calendar Assistant",
+  "short_name": "AI Calendar",
+  "description": "Transform your calendar into an intelligent assistant that understands natural language, automates scheduling, and keeps you organized effortlessly.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0f",
+  "theme_color": "#9333ea",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["productivity", "utilities", "business"],
+  "icons": [
+    {
+      "src": "https://github.com/mostapha-benlagha/AI-Calendar-Assistant/raw/main/frontend/public/icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://github.com/mostapha-benlagha/AI-Calendar-Assistant/raw/main/frontend/public/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "https://github.com/mostapha-benlagha/AI-Calendar-Assistant/raw/main/frontend/public/icon.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Open Calendar",
+      "short_name": "Calendar",
+      "description": "Open AI Calendar Assistant",
+      "url": "/",
+      "icons": [
+        {
+          "src": "https://github.com/mostapha-benlagha/AI-Calendar-Assistant/raw/main/frontend/public/icon.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "web",
+      "url": "https://github.com/mostapha-benlagha/AI-Calendar-Assistant"
+    }
+  ],
+  "prefer_related_applications": false
+}
